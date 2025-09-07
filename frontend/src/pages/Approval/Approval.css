@@ -1,0 +1,202 @@
+/* frontend/src/pages/Approval/Approval.css */
+.approval {
+    padding: 20px;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+  }
+  
+  .approval-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  .approval-header h1 {
+    color: #2c3e50;
+    margin: 0;
+  }
+  
+  .approval-status .status-badge {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  
+  .approval-status .status-badge.pending {
+    background-color: #e3f2fd;
+    color: #2196f3;
+  }
+  
+  .approval-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+  }
+  
+  .approval-main {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+  }
+  
+  .approval-card {
+    height: 100%;
+  }
+  
+  .approval-sidebar {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    height: fit-content;
+  }
+  
+  .approval-history h3 {
+    color: #2c3e50;
+    margin: 0 0 20px 0;
+    font-size: 18px;
+  }
+  
+  .history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .history-item {
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid;
+  }
+  
+  .history-item.approved {
+    background-color: #e8f5e8;
+    border-left-color: #4caf50;
+  }
+  
+  .history-item.rejected {
+    background-color: #ffebee;
+    border-left-color: #f44336;
+  }
+  
+  .history-item.pending {
+    background-color: #e3f2fd;
+    border-left-color: #2196f3;
+  }
+  
+  .history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .history-title {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 14px;
+  }
+  
+  .history-status {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-weight: 500;
+  }
+  
+  .history-meta {
+    display: flex;
+    gap: 10px;
+    font-size: 12px;
+    color: #7f8c8d;
+    margin-bottom: 8px;
+  }
+  
+  .history-comments {
+    color: #2c3e50;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  
+  .approval-comments {
+    margin-bottom: 20px;
+  }
+  
+  .approval-comments label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2c3e50;
+  }
+  
+  .approval-comments textarea {
+    width: 100%;
+    height: 80px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    resize: vertical;
+    font-family: inherit;
+  }
+  
+  .action-buttons {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .action-buttons .btn-approve, .action-buttons .btn-reject {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  .action-buttons .btn-approve {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .action-buttons .btn-approve:hover {
+    background-color: #45a049;
+    transform: translateY(-1px);
+  }
+  
+  .action-buttons .btn-reject {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .action-buttons .btn-reject:hover {
+    background-color: #da190b;
+    transform: translateY(-1px);
+  }
+  
+  .btn-icon {
+    font-size: 18px;
+  }
+  
+  /* 반응형 디자인 */
+  @media (max-width: 768px) {
+    .approval-content {
+      grid-template-columns: 1fr;
+    }
+    
+    .action-buttons {
+      flex-direction: column;
+    }
+  }

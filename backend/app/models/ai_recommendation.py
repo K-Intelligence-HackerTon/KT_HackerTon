@@ -24,7 +24,7 @@ class RecommendationStatus(str, PyEnum):
     PENDING = "pending"          # 대기 중
     APPROVED = "approved"        # 승인됨
     REJECTED = "rejected"        # 거부됨
-    AUTO_APPROVED = "auto_approved"  # 자동 승인됨
+    AUTO_APPROVED = "auto_approved"  # 자동 승인됨  
     EXPIRED = "expired"          # 만료됨
 
 class PriorityLevel(str, PyEnum):

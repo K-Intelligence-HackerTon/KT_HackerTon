@@ -1,0 +1,271 @@
+/* frontend/src/pages/LogAudit/LogAudit.css */
+.log-audit {
+    padding: 20px;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+  }
+  
+  .log-audit-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  .log-audit-header h1 {
+    color: #2c3e50;
+    margin: 0;
+  }
+  
+  .system-status {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .status-indicator {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  
+  .status-indicator.active {
+    background-color: #e8f5e8;
+    color: #4caf50;
+  }
+  
+  .last-update {
+    color: #7f8c8d;
+    font-size: 14px;
+  }
+  
+  .log-audit-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .metrics-panel, .logs-panel, .audit-panel {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  .metrics-panel h2, .logs-panel h2, .audit-panel h2 {
+    color: #2c3e50;
+    margin: 0 0 20px 0;
+    font-size: 18px;
+  }
+  
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .metric-item {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #3498db;
+  }
+  
+  .metric-label {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin-bottom: 10px;
+  }
+  
+  .metric-value {
+    font-size: 28px;
+    font-weight: 600;
+    color: #2c3e50;
+  }
+  
+  .metric-value.success {
+    color: #4caf50;
+  }
+  
+  .metric-value.warning {
+    color: #ff9800;
+  }
+  
+  .metric-value.info {
+    color: #2196f3;
+  }
+  
+  .logs-table {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .table-header {
+    display: grid;
+    grid-template-columns: 150px 100px 120px 1fr 120px 80px;
+    background-color: #f8f9fa;
+    font-weight: 600;
+    color: #2c3e50;
+    padding: 15px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .table-body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .table-row {
+    display: grid;
+    grid-template-columns: 150px 100px 120px 1fr 120px 80px;
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s;
+  }
+  
+  .table-row:hover {
+    background-color: #f8f9fa;
+  }
+  
+  .col-timestamp, .col-user, .col-action, .col-details, .col-ip, .col-status {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+  }
+  
+  .col-details {
+    color: #7f8c8d;
+    line-height: 1.4;
+  }
+  
+  .status-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  
+  .status-badge.success {
+    background-color: #e8f5e8;
+    color: #4caf50;
+  }
+  
+  .status-badge.warning {
+    background-color: #fff3e0;
+    color: #ff9800;
+  }
+  
+  .status-badge.critical {
+    background-color: #ffebee;
+    color: #f44336;
+  }
+  
+  .status-badge.info {
+    background-color: #e3f2fd;
+    color: #2196f3;
+  }
+  
+  .audit-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .audit-item {
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid;
+    background-color: #f8f9fa;
+  }
+  
+  .audit-item.critical {
+    border-left-color: #f44336;
+    background-color: #ffebee;
+  }
+  
+  .audit-item.warning {
+    border-left-color: #ff9800;
+    background-color: #fff3e0;
+  }
+  
+  .audit-item.info {
+    border-left-color: #2196f3;
+    background-color: #e3f2fd;
+  }
+  
+  .audit-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .audit-event {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 16px;
+  }
+  
+  .audit-time {
+    color: #7f8c8d;
+    font-size: 14px;
+  }
+  
+  .audit-severity {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  
+  .audit-severity.critical {
+    background-color: #ffebee;
+    color: #f44336;
+  }
+  
+  .audit-severity.warning {
+    background-color: #fff3e0;
+    color: #ff9800;
+  }
+  
+  .audit-severity.info {
+    background-color: #e3f2fd;
+    color: #2196f3;
+  }
+  
+  .audit-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .audit-user {
+    font-weight: 600;
+    color: #3498db;
+    font-size: 14px;
+  }
+  
+  .audit-description {
+    color: #2c3e50;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  
+  /* 반응형 디자인 */
+  @media (max-width: 768px) {
+    .table-header, .table-row {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    
+    .metrics-grid {
+      grid-template-columns: 1fr;
+    }
+  }

@@ -1,212 +1,98 @@
+// frontend/src/components/Layout/Layout.tsx
 import React, { useState } from 'react';
-import { Layout as AntLayout, Menu, Button, Avatar, Dropdown, Space, Badge } from 'antd';
-import { useNavigate, useLocation } from 'react-router-dom';
-import {
-  DashboardOutlined,
-  FireOutlined,
-  RobotOutlined,
-  CheckCircleOutlined,
-  FileTextOutlined,
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  BellOutlined,
-  UserOutlined,
-  LogoutOutlined,
-  SettingOutlined,
-} from '@ant-design/icons';
-import type { MenuProps } from 'antd';
-
-const { Header, Sider, Content } = AntLayout;
+import { Link, useLocation } from 'react-router-dom';
+import './Layout.css';
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const [collapsed, setCollapsed] = useState(false);
-  const navigate = useNavigate();
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   const location = useLocation();
 
-  // 메뉴 아이템 정의
-  const menuItems: MenuProps['items'] = [
-    {
-      key: '/dashboard',
-      icon: <DashboardOutlined />,
-      label: '메인 대시보드',
-    },
-    {
-      key: '/fire-detection',
-      icon: <FireOutlined />,
-      label: '산불 탐지',
-    },
-    {
-      key: '/ai-recommendation',
-      icon: <RobotOutlined />,
-      label: 'AI 권고안',
-    },
-    {
-      key: '/approval-process',
-      icon: <CheckCircleOutlined />,
-      label: '승인 프로세스',
-    },
-    {
-      key: '/log-audit',
-      icon: <FileTextOutlined />,
-      label: '로그 및 감사',
-    },
+  const menuItems = [
+    { path: '/dashboard', label: '대시보드', icon: '📊' },
+    { path: '/ai-recommendation', label: 'AI 권고안', icon: '🤖' },
+    { path: '/approval', label: '승인 프로세스', icon: '✅' },
+    { path: '/log-audit', label: '로그 및 감사', icon: '📋' }
   ];
-
-  // 사용자 메뉴
-  const userMenuItems: MenuProps['items'] = [
-    {
-      key: 'profile',
-      icon: <UserOutlined />,
-      label: '프로필',
-    },
-    {
-      key: 'settings',
-      icon: <SettingOutlined />,
-      label: '설정',
-    },
-    {
-      type: 'divider',
-    },
-    {
-      key: 'logout',
-      icon: <LogoutOutlined />,
-      label: '로그아웃',
-    },
-  ];
-
-  const handleMenuClick = ({ key }: { key: string }) => {
-    navigate(key);
-  };
-
-  const handleUserMenuClick = ({ key }: { key: string }) => {
-    switch (key) {
-      case 'profile':
-        // 프로필 페이지로 이동
-        break;
-      case 'settings':
-        // 설정 페이지로 이동
-        break;
-      case 'logout':
-        // 로그아웃 처리
-        console.log('로그아웃');
-        break;
-    }
-  };
 
   return (
-    <AntLayout style={{ minHeight: '100vh' }}>
-      <Sider 
-        trigger={null} 
-        collapsible 
-        collapsed={collapsed}
-        width={250}
-        style={{
-          background: '#f5f5f5',
-          borderRight: '1px solid #e8e8e8',
-        }}
-      >
-        <div style={{ 
-          padding: '16px', 
-          textAlign: 'center',
-          borderBottom: '1px solid #e8e8e8',
-          marginBottom: '16px'
-        }}>
-          <h2 style={{ 
-            margin: 0, 
-            color: '#1a66cc',
-            fontSize: collapsed ? '16px' : '20px',
-            fontWeight: 'bold'
-          }}>
-            {collapsed ? '🔥' : '🔥 산불 대응 AI Agent'}
-          </h2>
-        </div>
-        
-        <Menu
-          mode="inline"
-          selectedKeys={[location.pathname]}
-          items={menuItems}
-          onClick={handleMenuClick}
-          style={{
-            background: 'transparent',
-            border: 'none',
-          }}
-        />
-      </Sider>
-      
-      <AntLayout>
-        <Header style={{ 
-          padding: '0 24px', 
-          background: '#1a66cc',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <Button
-              type="text"
-              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-              onClick={() => setCollapsed(!collapsed)}
-              style={{
-                fontSize: '16px',
-                width: 64,
-                height: 64,
-                color: '#fff',
-              }}
-            />
-            <h1 style={{ 
-              color: '#fff', 
-              margin: 0, 
-              marginLeft: '16px',
-              fontSize: '24px',
-              fontWeight: '600'
-            }}>
-              산불 대응 AI Agent 시스템
-            </h1>
+    <div className="layout">
+      <div className={`sidebar ${sidebarOpen ? 'open' : 'closed'}`}>
+        <div className="sidebar-header">
+          <div className="logo">
+            <div className="logo-icon">🚨</div>
+            {sidebarOpen && (
+              <div className="logo-text">
+                <h2>산불 대응 AI</h2>
+                <p>믿:음 2.0</p>
+              </div>
+            )}
           </div>
-          
-          <Space size="middle">
-            <Badge count={5} size="small">
-              <Button
-                type="text"
-                icon={<BellOutlined />}
-                style={{ color: '#fff', fontSize: '18px' }}
-              />
-            </Badge>
-            
-            <Dropdown
-              menu={{ 
-                items: userMenuItems,
-                onClick: handleUserMenuClick
-              }}
-              placement="bottomRight"
+          <button 
+            className="sidebar-toggle"
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+          >
+            {sidebarOpen ? '◀' : '▶'}
+          </button>
+        </div>
+        <nav className="sidebar-nav">
+          {menuItems.map(item => (
+            <Link
+              key={item.path}
+              to={item.path}
+              className={`nav-item ${location.pathname === item.path ? 'active' : ''}`}
             >
-              <Button type="text" style={{ color: '#fff' }}>
-                <Space>
-                  <Avatar icon={<UserOutlined />} />
-                  <span>관리자</span>
-                </Space>
-              </Button>
-            </Dropdown>
-          </Space>
-        </Header>
+              <div className="nav-icon">{item.icon}</div>
+              {sidebarOpen && <span className="nav-label">{item.label}</span>}
+            </Link>
+          ))}
+        </nav>
+        {sidebarOpen && (
+          <div className="sidebar-footer">
+            <div className="system-info">
+              <div className="status-indicator active"></div>
+              <span>시스템 정상</span>
+            </div>
+          </div>
+        )}
+      </div>
+      
+      <div className="main-content">
+        <header className="header">
+          <div className="header-left">
+            <div className="breadcrumb">
+              <span className="breadcrumb-item">홈</span>
+              <span className="breadcrumb-separator">/</span>
+              <span className="breadcrumb-current">
+                {menuItems.find(item => item.path === location.pathname)?.label || '대시보드'}
+              </span>
+            </div>
+          </div>
+          <div className="header-right">
+            <div className="header-actions">
+              <div className="notification-bell">
+                <span className="bell-icon">🔔</span>
+                <div className="notification-badge">3</div>
+              </div>
+              <div className="user-info">
+                <div className="user-avatar">👨‍💼</div>
+                <div className="user-details">
+                  <span className="user-name">관리자</span>
+                  <span className="user-role">시스템 관리자</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
         
-        <Content style={{ 
-          margin: '24px',
-          padding: '24px',
-          background: '#fff',
-          borderRadius: '8px',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-          minHeight: 'calc(100vh - 112px)'
-        }}>
+        <main className="content">
           {children}
-        </Content>
-      </AntLayout>
-    </AntLayout>
+        </main>
+      </div>
+    </div>
   );
 };
 
